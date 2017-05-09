@@ -1,0 +1,16 @@
+import json
+import matplotlib.pyplot as plt
+
+with open('Meteorite_Landings.JSON') as infile:
+    reclongData = json.load(infile)
+len(reclongData)
+reclongData[0]
+
+y = 0
+for reclong in reclongData[:50]:
+    y = y + 24 
+    barwidth = reclong ['reclong'] / 1
+    rect(450, y - 24, barwidth, 18)
+    text(reclong['name'], 10, y)
+    fill(0.8, 0, 0)
+    fill(0, 0.8, 0)

@@ -1,0 +1,16 @@
+import json
+import matplotlib.pyplot as plt
+
+with open('meteorite_landings1.json') as infile:
+    freqData = json.load(infile)
+len(freqData)
+freqData[0]
+
+# Use "list comprehension to create a new list from an old list
+listOfNumbers = [w['year'] for w in freqData]
+# plot
+plt.plot(listOfNumbers)
+plt.show()
+# flip diagram in histogram
+plt.hist(listOfNumbers)
+plt.show()

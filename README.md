@@ -7,9 +7,11 @@ This page explains the visualization of open source data in PlotDevice (a Python
 # DATA
 The data that is used is found on the Open Nasa - open data website. This comprehensive data set from The Meteoritical Society contains information on all of the known meteorite landings. The Fusion Table is collected by Javier de la Torre and they've also provided an XLS file that consists of 34,513 meteorites.
 <br>
+<br>
 Source of data:
 https://open.nasa.gov/open-data/ <br>
 --> https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh
+<br>
 <br>
 The JSON file that they provide was a browser version that I couldn't really work with, so I downloaded the CSV file and converted it into a JSON file by using Mr. Data Converter (https://shancarter.github.io/mr-data-converter/) and I cleaned the file up by using a beautifier (http://jsbeautifier.org/).
 

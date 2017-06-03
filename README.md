@@ -4,7 +4,7 @@ Poster Datavisualization of Meteorite Landings on Earth
 # Synopsis
 This page explains the visualization of open source data in PlotDevice (a Python-based graphics language).<br>
 
-# DATA
+# Data
 The data that is used is found on the Open Nasa - open data website. This comprehensive data set from The Meteoritical Society contains information on all of the known meteorite landings. The Fusion Table is collected by Javier de la Torre and they've also provided an XLS file that consists of 34,513 meteorites.
 <br>
 <br>
@@ -30,7 +30,41 @@ _ reclong<br>
 _ GeoLocation<br>
 <br>
 
+# Process
 
+<h3>1</h3>
+Research about open source data <br>
+
+<h3>2</h3>
+Find data source(s) <br>
+
+<h3>3</h3>
+Choose an interesting topic (in this case meteorite landings) <br>
+
+<h3>4</h3>
+Decide what data fields are useful and what would be a good way to visualize this: I decided that for the landing of meteorites, the geolocation, mass (g) and year would be the most useful information. Later I decided to make two different visualizations based on the 'fall' field: I divided it in 'fell' and 'found'. The use of a worldmap to visualize this all together seemed logical. <br>
+
+<h3>5</h3>
+Creating the PlotDevice code: I added a worldmap to the background and adjusted the size to the size of this background image. Then I defined the mapValue (The result is an immutable map which is a transformation of the original map (all values are incremented by one). Once the map method terminates, the new map is actually holding those new values) because I'm working with longitude and latitude (for the geolocation).<br>
+<br>
+I import the json file that I'm using and give it the name 'meteordata': this way I can refer to the jsonfile throughout the code in PlotDevice. Next, I'm creating a ForLoop (to repeat the following block of code multiple times) and in the ForLoop I'm creating an If Statement. I start of with saying that I only want to deal with the 'fell' or 'found' meteorite landings in the json file (this way I'm exluding either one of the two).<br>
+Next, I have to adjust the 'year' field in the json file. I can't use the information from the json file because it consists of multiple elements(slashes, spaces and comma's), and therefore it isn't recognized as a number. I'm converting this string into integers (int) and remove the slashes and spaces so only the year will be left. <br>
+<br>
+Next, I'm defining the reclong and reclat from the json file into the values 'lon' and 'lat',  and I'm defining the mass to be a value that can define the diameter of the drawn ovals (I divide this value by x so the ovals won't be too big). I'm also making sure that the very small ovals (meteorites) with a mass below 100, will be divided by a smaller number (so they will still be visible). <br>
+<br>
+The gradient in color is dependant of the year (with a range from 1850-2017). I made the overall color settings a bit transparent so you can see the smaller, underlying meteorite landings shine through the bigger ones (this way, they won't disappear). I added a small stroke to the ovals so they can be better distinguished from the others.<br>
+<br>
+
+N.B.<br>
+For the 'fell' visualization, the color is dependant of the year the meteorites fell in. For the 'found' visualization, the color is dependant of the mass of the meteorite, because the year isn't a very important factor in this case. 
+
+<h3>6</h3>
+Export the outcomes as pdf and add a title for the poster.<br>
+
+<h3>7</h3>
+Update Github Page<br>
+
+# Posters
 
 ![alt text](https://github.com/nndbkkr/MeteoriteDataPoster/blob/master/Artboard1.png)
 

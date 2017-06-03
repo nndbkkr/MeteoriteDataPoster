@@ -1,0 +1,51 @@
+import json
+
+size(3002, 1567)
+background('world_1.jpg')
+
+def mapValue(value, fromMin, fromMax, toMin, toMax):
+    # Figure out how 'wide' each range is
+    fromSpan = fromMax - fromMin
+    toSpan = toMax - toMin
+    
+    # Convert the from range into a 0-1 range (float)
+    valueScaled = float(value - fromMin) / float(fromSpan)
+    
+    # Convert the 0-1 range into a value in the to range.
+    return toMin + (valueScaled * toSpan)
+
+def xOfDot(lon):
+    return mapValue(lon, -150, 180, 0, WIDTH)
+
+def yOfDot(lat):
+    return mapValue(lat, -100, 90, HEIGHT, 0)
+
+with open("meteorite_landings.json") as infile:
+    meteorData = json.load(infile)
+print len(meteorData)
+print meteorData[0]
+
+for meteor in meteorData[::50]:
+    if meteor['fall'] == "Fell":
+        date = meteor["year"]
+        year = int(date.split()[0].split("/")[2])
+        lon = meteor['reclong']
+        lat = meteor['reclat']
+        if lon and lat:
+            x = xOfDot(lon)
+            y = yOfDot(lat)
+            value = float(meteor['mass (g)'])
+            diameter = value / 300
+            if value < 100:
+               diameter = value / 0.5
+            x = x - (diameter / 2)
+            y = y - (diameter / 2)
+            green = mapValue(year, 1850, 2017, 0.6, 0.0)
+            fill(1, green, 0, 0.8)
+            oval(x, y, diameter, diameter)
+            stroke(0.5)
+            #fill(1)
+            #text(meteor["name"], x, y, font=10)
+
+
+    
